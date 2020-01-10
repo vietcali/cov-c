@@ -1,12 +1,22 @@
+language: c
+
 env:
   global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
    - secure: "UmTsFOmkfSW2J+I/eSNlM5vxq3njiW36cX7N/In9TQpOVVde6j8PZZBT0Itk7zb7BruJPtbCQ8U9/ZCTvDvZemctsv6RHT3eXvSQFI+2YIV5juuV0xyjjqHLXd89I6/qMmcYZLV8iHiJjY44x8we1UXyC1h+iOAAc3foNIcGbMEWij0zTapvCLFr7+lttPJAEL5g/SQmTa1pLCGoUGjURw+BDzDtXRymb2/V34SfY7omG97ldT+7Q+ZLOP50s6JAFg2kCkksnYxepWTGK0Y2BxTleCSr3Itejdy4irg6xRyp5BppkF+PWS5ZBYeldh8FbAf3SX5jWs7wpU9CL/kAwiivrYGv+HvsahPFJt8/aiW7PgAKIooSSzFbYAgR0d04Spt0tMqh1xW7fLeQnsQMt86RIcEQ6IS6FdyB/Tg2+xvT9LrhlY6+mttIGPOdbQdsxj9mHLZ718u2Tmpt58mnQjg25yBBVGAGYE0vTP0vdQxk5vPbjQief6Mz4bR1Bplv5ogIX97FmuC1oLAKZvcM1qFQ6+Zj2MnwhKBS9mrB90Yu5m8VPQjTs1bltApd3kl2v+9kWHMg2Tl4cG9XFxIRLQfMpeYvNeGHtvtFYVG8yWiwM36L9vwgUMeM2fAoh1o74uVIIvSarRHwTCVcYbqUHiGnEggJRHwsALkEghd9iOA="
+
+before_install:
+  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+
 addons:
   coverity_scan:
     project:
-      name: vietcali/cov-c
+      name: "vietcali/cov-c"
+      description: "coverity-scan test code"
     notification_email: vietcali2000@gmail.com
-    build_command: make
+    build_command_prepend: ""
+    build_command: "make"
     branch_pattern: coverity_scan
-language: c
+
 script: make
