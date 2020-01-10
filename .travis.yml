@@ -2,6 +2,10 @@ language: c
 
 script: make
 
+env:
+  global:
+  - secure: "VdWCfc5SOh1sl-7vJQGNyQ"
+
 addons:
   coverity_scan:
 
