@@ -1,19 +1,12 @@
-language: c
-
-script: make
-
 env:
   global:
-  - secure: "VdWCfc5SOh1sl-7vJQGNyQ"
-
+  - secure: "l0Llg6C5kteJWg/Kex2NWaNl7I8iOYZ4fcOXq4o1kswC7C7KlUIOLZl6vGmxj3IufFppmhrVZJJewLuUHf1e6h+r7Sl9zuz16JIpmxIcpS0gkiZwP/+qmT9ix7KodH0tkydPPoztkImpvH5UaKvv/a0/zKIj4IpK25VGbtLHyX5V1YNANBDnz3wOS0BSd4tapTkulgFj3fWW8xn9b6MROS/DbG/+FFftWkdWjdYlomHcRCVs+77fFJU9gYBCWN/gGVEieTuXOBjKklFxikFVUXBgaXKcv4R9MVwzi9gpxJUHvdiQ1eG2tddOjgLRsLsZ46znwcaVbdLC03fISp/m8dmiz7gtZXgoYuwSzgySYzrLF9LeIrgy3I3CM5ggAm/mW15A61aAZ9tIBJLZYjkpYQlN3C42JAY1Ahtgd/vr5QFeyner8HrBAUrpieIKJsLUSk84vpArx9/H75v6lgEY6yZwrt4sbKqbVfe8UezanQe8ryOsAXTfhRGqk9DXmQ3wTGXMlVU3NZBHajb8AfrbdDI2WGOCeJvbcWJN7AByYzKvxx9sAbuy5IGKkyThnvg2WHm1Db6iF2/AJCaWRnnLWGO9RBTfvyu02Fkc1hcKYMBGqk7lkv3OLAP55bxe6aiFefC5tdkup37MRTlAOpGMUsoJH53/FWar39Puywk4iBg="
 addons:
   coverity_scan:
-
     project:
       name: vietcali/cov-c
-      
     notification_email: vietcali2000@gmail.com
-
     build_command: make
-
     branch_pattern: coverity_scan
+language: c
+script: make
