@@ -1,22 +1,19 @@
 language: c
-
 env:
   global:
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
-   - secure: "WGa2YxdGr9h7P1JIcGNqM5PUEJp/0DRyGXMYZ4+GoTzu9PcHnxd+w9Qr/QatRzOVzgh4l5PLgmE6VwBNQaQhrlfZ+qRZUE9Ve3LGYXhfMyYdxow/exRsLSra0fa8CQEflz9s5egooyjTsMfrpgJS3w2sUtwlNHr8vBvB+RK8r8sRa6zs6PAzQmKw0nFUMTEFmIxVuTJ8OF83kZf5J6rJWmI2Ga5v4gCo8sq/eHe/fP8mNrUMzTywu1lmBzOEVX+6eJXkJ/xLvib66pvlOthdmS3MU8P5UqDDEDsax/OE7u1231BA9zMF5WDTbgxl8vZr/BWnEBoJmTFb2ksF8f/Fsp6HrWt0He9/JX2LqlgChublveXocOtNwNXXcxlpuKHKJztvovFqslUA0ZM4R7303ppT6Y7r8qN8EB+Fe3760d5QUnIsFBGUUSfy5WxoI3cs/BEQRVf4x70ZdnaGh0pee49udMat/fEFloPICDpLaeT8S/W8JvMIgIFOEdw+GQTx9kSOwZJ7oFg2JIDf0mV6P1198xg95kYn1w1jP3/ghbxVue9ker8dHoOezpwiYX8+N2uMCNrQi0p3w/oJbMxXUINxJVDL9PZe7IsVF1ZjkrXgM5Fm8Dqptb3IQ8E1E1HYyf40WDQ1II30/SJYyTN9cpEC13O+T5EltYe90sccs5w="
-
+  - secure: WGa2YxdGr9h7P1JIcGNqM5PUEJp/0DRyGXMYZ4+GoTzu9PcHnxd+w9Qr/QatRzOVzgh4l5PLgmE6VwBNQaQhrlfZ+qRZUE9Ve3LGYXhfMyYdxow/exRsLSra0fa8CQEflz9s5egooyjTsMfrpgJS3w2sUtwlNHr8vBvB+RK8r8sRa6zs6PAzQmKw0nFUMTEFmIxVuTJ8OF83kZf5J6rJWmI2Ga5v4gCo8sq/eHe/fP8mNrUMzTywu1lmBzOEVX+6eJXkJ/xLvib66pvlOthdmS3MU8P5UqDDEDsax/OE7u1231BA9zMF5WDTbgxl8vZr/BWnEBoJmTFb2ksF8f/Fsp6HrWt0He9/JX2LqlgChublveXocOtNwNXXcxlpuKHKJztvovFqslUA0ZM4R7303ppT6Y7r8qN8EB+Fe3760d5QUnIsFBGUUSfy5WxoI3cs/BEQRVf4x70ZdnaGh0pee49udMat/fEFloPICDpLaeT8S/W8JvMIgIFOEdw+GQTx9kSOwZJ7oFg2JIDf0mV6P1198xg95kYn1w1jP3/ghbxVue9ker8dHoOezpwiYX8+N2uMCNrQi0p3w/oJbMxXUINxJVDL9PZe7IsVF1ZjkrXgM5Fm8Dqptb3IQ8E1E1HYyf40WDQ1II30/SJYyTN9cpEC13O+T5EltYe90sccs5w=
 before_install:
-  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
-
+- echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN
+  CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 addons:
   coverity_scan:
     project:
-      name: "vietcali/cov-c"
-      description: "coverity-scan test code"
+      name: vietcali/cov-c
+      description: coverity-scan test code
     notification_email: vietcali2000@gmail.com
-    build_command_prepend: ""
-    build_command: "make"
+    build_command_prepend: ''
+    build_command: make
     branch_pattern: coverity_scan
-
 script: make
+dd:
+  secure: UpIcPsEBGHFSq8d3YGP3pkfPqKY15wuJMlzJ9KtcgtrGdYGG8+JUsyAPryQ8WMHUmI6zUVe0DXp2tPy3iOiOqH6HIG6nJi/ROZM005J7UiF7bHuEB9PTynd2Lex5S4JGDRhuqqUEWQ1OOpkjGXqXmTBFzesBobfIePvgsp2D60nDYwnyrXBtbR1uY5XAg4MKO5bTFJZSM2JHePOsoQcj8mZy3PSjE/pVP9xc6zSqUUQrkRT7+LFywtJIoTWEgLJZtqtSSY7f9JXEz6FXaDOCdW3Du8xEIhz5ymsJoTkjFxdPDu5h0wWtH6B4LNj/e6P5RKbLTfivjwMzxJwpJrCfnBIIZcWXezxN3w4G++awHaMXdzL20x4abmi2KMr9pEEsHfQW8n6XejSq8CCEXInIcvLQRD5L1XLOyeKlTFNky4P3VGbMetyrSxSgXT4Q0Bw8HMXihy+QgILoqSOk0t/Ia/JYgjf4KHNBaDZRuPVMZllYuFxQJZO70jFnRYooZr7dHw8/TH4GXLC/Y+myyhtMqxa5rUNUx7VAOUglP6+13e6YkiVAhdux+wWHRloLsVUgnpaxqV3KkA0Ry3PHvMCpTcGWWNWLbmb2j0t73ma4gg9X+dUiZRbRzcp3ftNOeHJb9QJ2n4uBkySC2iHve35GJ60ey3JCdhGs8hcZ/kw6bdM=
