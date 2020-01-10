@@ -2,3 +2,14 @@ language: c
 
 script: make
 
+addons:
+  coverity_scan:
+
+    project:
+      name: vietcali/cov-c
+      
+    notification_email: vietcali2000@gmail.com
+
+    build_command: make
+
+    branch_pattern: coverity_scan
